@@ -14,8 +14,21 @@
    <nav class="navbar navbar-light bg-faded">
     <a href="/" class="navbar-brand">finechat</a>
     <ul class="nav navbar-nav">
+      <% if current_user %>
+     <li class="nav-item">
+       <%= link_to "Log out #{current_user.email}", logout_path, method: 'delete', class: 'nav-link' %>
+     </li>
+       <% else %>
      <li class="nav-item">
       <%= link_to "Create an Account", new_user_path, class: 'nav-link' %>
+     </li>
+
+     <li class="nav-item">
+      <%= link_to "Log In", new_session_path, class: 'nav-link' %>
+        <% end %>
+    </ul>
+  </nav>
+
     <div class="container">
     <%= yield %>
     </div>

@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
+   
     <title>Finechat</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag      'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
+   <nav class="navbar navbar-light bg-faded">
+    <a href="/" class="navbar-brand">finechat</a>
+    <ul class="nav navbar-nav">
+     <li class="nav-item">
+      <%= link_to "Create an Account", new_user_path, class: 'nav-link' %>
+    <div class="container">
     <%= yield %>
+    </div>
   </body>
 </html>

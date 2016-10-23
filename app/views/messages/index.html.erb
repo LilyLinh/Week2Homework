@@ -1,24 +1,72 @@
-<h1>Tat ca cac message</h1>
+<h1> Message Box </h1>
 
+<div class="card card-block">
+  <%= form_tag nil, method: 'get' do %>
+  <%= hidden_field_tag :messages, params[:messages] %>
+  <div class= "form-inline">
+  <%= select_tag :sort_column, options_for_select([['Time Sent', 'created_at'], ['Time Received','created_at']]), class: 'form-control' %>
+  <%= select_tag :sort_direction, options_for_select([['Ascending', 'asc'],['Descending','desc']]), class: 'form-control' %>
+  <%= submit_tag "Sort", class: "btn btn-secondary" %>
+  </div>
+  <% end %>
+  </div>
 
 <table class "table">
  <thead class="thead thead-default">
   <tr>
-   <th>Sender ID</th>
-   <th>Receiver ID</th>
-   <th>content</th>
-   <th>Created at</th>
+   
+   <th>Sent Message To</th>
+   
+   <th></th>
+   <th>Status</th>
+   <th>Time Sent</th>
+  
   </tr>
  </thead>
  <tbody>
+
+ 
+
   <% @messages.each do |message| %>
+  
    <tr>
-    <td><%= message.sender_id %></td>
-    <td><%= message.receiver_id %></td>
-    <td><%= message.content %></td>    
+    
+    <td><%= message.receiver.name %></td>
+    
+    <td>
+    <% if message.read? %>
+      <td>read</td>
+      <% else %>
+      <td>unread</td>
+      <% end %>
     <td><%= time_ago_in_words message.created_at %></td>
+    
+    
    </tr>
   <% end %>
  </tbody>
 </table>
 
+
+<table class "table">
+ <thead class="thead thead-default">
+  <tr>
+   <th>Incoming Message from</th>
+  
+   <th>Time Received</th>
+   
+  </tr>
+ </thead>
+ <tbody>
+  <% @message.each do |message| %>
+   <tr>
+    <td><%= message.sender.name %></td>
+    
+       
+    <td><%= time_ago_in_words message.created_at %></td>
+    <td><%= link_to "Read Message" , message_path(message),  class: 'btn btn-secondary' %></td>
+    
+   </tr>
+  <% end %>
+ </tbody>
+</table>

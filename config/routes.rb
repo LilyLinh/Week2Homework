@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'friendlist/new' => 'friendlists#new'
   post 'friendlists' => 'friendlists#create'
   get 'messages/index'
+  get 'messages/:id' => 'messages#show'
   get 'messages/new' => 'messages#new' #message_new_path
   get 'new_message' => 'messages#new'
   post 'messages' => 'messages#create'
@@ -14,5 +15,12 @@ Rails.application.routes.draw do
   root "users#index"
   get 'taousermoi' => 'users#new'
   resources :users
+
+  resources :messages do
+  collection do
+    get :sent
+    get :received
+  end
+end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

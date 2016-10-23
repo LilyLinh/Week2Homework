@@ -12,3 +12,19 @@ class User < ApplicationRecord
 	has_many :added_friends, through: :added_friendlists
 end
 
+def received_messages
+  	Message.where(receiver: self)
+  end
+ 
+  def sent_messages
+  	Message.where(sender: self)
+  end
+
+  def latest_received_messages(n)
+  	received_messages.order(created_at: :desc).limit(n)
+  end
+
+  
+  def unread_messages
+    received_messages.unread
+  end

@@ -1,0 +1,19 @@
+<h1>Add friend</h1>
+
+<%= form_for @friendlist do |f| %>
+<% unless @friendlist.errors.empty? %>
+
+<div class="alert alert-danger">
+	<%= @friendlist.errors.full_messages.to_sentence %>
+</div>
+<% end %>
+
+<div class="form-group">
+	<%= f.label :friend_id %>
+	
+	<%= collection_select(:friendlist, :friend_id, @users_not_me, :id, :email, {:prompt => true}) %>
+	<%= f.hidden_field :user_id, :value => current_user.id, class: 'form-control' %>
+</div>
+
+<%= f.submit "Add friend", class: "btn btn-primary" %>
+<% end %>

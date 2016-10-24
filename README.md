@@ -6,7 +6,7 @@ Submitted by: **Linh**
 
 Time spent: **25** hours
 
-URL: **Insert your Heroku URL here**
+URL: **https://linhweek2homework.herokuapp.com**
 
 ## User Stories
 
@@ -44,7 +44,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](relative-path-to-your-gif-file-on-github-or-absolute-path-to-file-on-imgur-or-youtube)
+![Video Walkthrough](http://imgur.com/2i4VJFd.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
